@@ -16,7 +16,7 @@ defmodule Issues.TableFormatter do
   end
 
   def printable(str) when is_binary(str), do: str
-  def printable(str), do: str
+  def printable(str), do: to_string(str)
 
   def widths_of(columns) do
     columns
