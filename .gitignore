@@ -24,3 +24,5 @@ issues-*.tar
 
 # Ignore elixir ls
 .elixir_ls
+
+issues
