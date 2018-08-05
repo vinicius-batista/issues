@@ -1,10 +1,12 @@
 defmodule Issues.CLI do
-  @default_count 4
   @moduledoc """
   Handle the command line parsing and the dispatch to
   the various functions that end up generating a
   table of the last _n_ issues in a github project
   """
+
+  @default_count 4
+  alias Issues.TableFormatter
 
   def run(argv) do
     argv
@@ -45,6 +47,7 @@ defmodule Issues.CLI do
     |> decode_response()
     |> sort_into_descending_order()
     |> last(count)
+    |> TableFormatter.print_table_for_columns(["number", "created_at", "title"])
   end
 
   def decode_response({:ok, body}), do: body
